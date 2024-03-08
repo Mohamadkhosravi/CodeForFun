@@ -1,10 +1,10 @@
-#include<iostream>
-int sum (int a, int b);
-int sub (int a, int b);
-int mult (int a, int b);
-int dive (int a, int b);
+#include <iostream>
+int sum(int a, int b);
+int sub(int a, int b);
+int mult(int a, int b);
+int dive(int a, int b);
 
-int main ()
+int main()
 {
 
   int chose;
@@ -21,36 +21,36 @@ int main ()
   std::cout << "chose=" << std::endl;
   std::cin >> chose;
 
-  int (*math[4]) (int a, int b);
+  int (*math[4])(int a, int b);
 
   math[0] = sum;
   math[1] = sub;
   math[2] = mult;
   math[3] = dive;
 
-  result = math[chose] (number1, number2);
+  result = math[chose](number1, number2);
 
   std::cout << "result=" << std::endl;
   std::cout << result << std::endl;
   return 0;
 };
 
-int sum (int a, int b)
+int sum(int a, int b)
 {
   return a + b;
 };
 
-int sub (int a, int b)
+int sub(int a, int b)
 {
   return a - b;
 };
 
-int mult (int a, int b)
+int mult(int a, int b)
 {
   return a * b;
 };
 
-int dive (int a, int b)
+int dive(int a, int b)
 {
   return a / b;
 };
