@@ -1,6 +1,8 @@
 
 #include <iostream>
-
+/*
+ An example of a pointer to a pointer using dynamic memory(new/delete ) to create a pointer that holds the address of other pointers.
+ */
 int main ()
 {
 #define rows 10
