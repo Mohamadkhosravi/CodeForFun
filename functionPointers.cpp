@@ -1,4 +1,7 @@
 #include <iostream>
+
+//How to use function as function input using function address and pointers (callback function)
+
 int sum(int a, int b);
 int sub(int a, int b);
 int mult(int a, int b);
