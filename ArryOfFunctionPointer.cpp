@@ -3,6 +3,10 @@
 #include <vector>
 using namespace std;
 
+/*
+  state machine without using any condition and 
+  using from function pointer
+*/
 bool ascendingCompair(int number1, int number2)
 {
   if (number1 > number2)
