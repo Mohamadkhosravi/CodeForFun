@@ -8,14 +8,14 @@ typedef struct {
     uint8_t initialized;
 } Handle_t;
 #define LED_PIN 2
-Handle_t GPIO_Handler;
+typedef Handle_t GPIO_Handler;
 
-Handle_t *GPIO_Instance(){
-    static Handle_t Instance={0};
+GPIO_Handler *GPIO_Instance(){
+    static GPIO_Handler Instance={0};
     return &Instance;
 }
 void GPIO_Init(){
-    Handle_t* gpio = GPIO_Instance;
+    GPIO_Handler* gpio = GPIO_Instance;
     if(!gpio->initialized){
         gpio_reset_pin(LED_PIN);
         gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
