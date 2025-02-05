@@ -76,12 +76,17 @@ GPIO_Device* buzzer1 = GPIO_Factory::createDevice("Buzzer", PIN_BUZZER);
 void setup() {
    LEDRed->init();
    LEDBlue->init();
-   buzzer1; 
+   buzzer1->init(); 
 }
 
 void loop() {
   LEDRed->on();
   LEDBlue->off();
-  buzzer1->off;
-  
+  buzzer1->off();
+    LED* LEDRed = dynamic_cast<LED*>(LEDRed);
+    if (LEDRed) {
+        LEDRed->toggle(); // اگر `dev` واقعاً LED باشد، تابع `toggle()` اجرا می‌شود
+    } 
+
+
 }
