@@ -85,7 +85,7 @@ void loop() {
   buzzer1->off();
     LED* LEDRed = dynamic_cast<LED*>(LEDRed);
     if (LEDRed) {
-        LEDRed->toggle(); // اگر `dev` واقعاً LED باشد، تابع `toggle()` اجرا می‌شود
+        LEDRed->toggle(); 
     } 
 
 
