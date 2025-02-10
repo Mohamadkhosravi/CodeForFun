@@ -17,7 +17,7 @@ class GenericGPIO {
     //virtual void PinInit(uint32_t pin ,mode Mode) = 0;
     virtual void turnOn() = 0;
     virtual void turnOff() = 0;
-    ~ GenericGPIO();
+    ~ GenericGPIO()=default;
     
 };
 #ifdef MCU_IS_ESP
@@ -27,7 +27,7 @@ class ESP32_GPIO {
     gpio_num_t Pin;
    
     public:
-        ESP32_GPIO(gpio_num_t pin,Mode_t mode) : Pin(pin){
+        ESP32_GPIO(gpio_num_t pin) : Pin(pin){
             gpio_reset_pin(Pin);
             gpio_set_direction(Pin, GPIO_MODE_OUTPUT);
         }
@@ -47,12 +47,12 @@ class ESP32_GPIO {
         }
         void setHigh(){HAL_GPIO_WritePin(GPIOB, Pin, GPIO_PIN_SET);}
         void setLow(){ HAL_GPIO_WritePin(GPIOB, Pin, GPIO_PIN_RESET);}
-       
+         virtual ~GenericGPIO() = default;
        
  };
 #endif
 #ifdef MCU_IS_AVR
- class AVR_GPIO :public GenericGPIO{
+ class AVR_GPIO {
     private:
      Mode_t Mode=Output;
      uint32_t Pin;
@@ -75,9 +75,9 @@ class ESP_GPIO_Adapter : public GenericGPIO {
         
         void turnOn() override { gpio->setHigh(); }
         void turnOff() override { gpio->setLow(); }
-    };
+};
     
-}
+ 
 
 /*
 class AVR_GPIO_Adapter : public GenericGPIO {
@@ -91,11 +91,16 @@ class AVR_GPIO_Adapter : public GenericGPIO {
     };
     
 } */
+ESP32_GPIO ESP_LED(GPIO_NUM_2);
+ESP_GPIO_Adapter espAdapter(&ESP_LED);
+
 void setup()
 {
-
 }
 void loop() {
- vTaskDelay(pdMS_TO_TICKS(500));
-}
+    espAdapter.turnOn();
+    vTaskDelay(pdMS_TO_TICKS(500));
+    espAdapter.turnOff();
+    vTaskDelay(pdMS_TO_TICKS(500));
 
+}
