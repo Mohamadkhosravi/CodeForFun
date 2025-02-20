@@ -170,6 +170,7 @@ int main() {
     sensors.addSensor(new CO2Sensor(SPI));
     sensors.addSensor(new SmokeSensor (I2C));
     sensors.addSensor(new HumiditySensor(UART));
+    sensors.readValue();
     sensors.showInformation();  
     return 0;
 }
