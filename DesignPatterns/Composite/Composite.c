@@ -49,7 +49,7 @@ MenuComponent * createSubMenu(MenuComponent *Item){
     static uint32_t CounterOfChilde =1;
 
       MenuComponent *subMenu;
-      subMenu=(MenuComponent *) realloc(subMenu,sizeof(MenuComponent) );
+      subMenu=(MenuComponent *) realloc(subMenu,sizeof(MenuComponent));
       return subMenu;
 
 }
@@ -61,14 +61,17 @@ MenuComponent * createSubMenu(MenuComponent *Item){
     Menu1Item2=createMenuItem("item2",action2);
     Menu1Item3=createMenuItem("item1",action3);
     Menu1Item4=createMenuItem("item2",action4);
-    
+
+    subMenu=createSubMenu(Menu1Item4);
     subMenu=createSubMenu(Menu1Item1);
     subMenu=createSubMenu(Menu1Item2);
     subMenu=createSubMenu(Menu1Item3);
-    subMenu=createSubMenu(Menu1Item4);
+  
 
      subMenu->ACTION();
-     
+     subMenu->ACTION();
+     subMenu->ACTION();
+     subMenu->ACTION();
     // subMenu[2]->ACTION();
     // subMenu[3]->ACTION();
     // subMenu[4]->ACTION();
