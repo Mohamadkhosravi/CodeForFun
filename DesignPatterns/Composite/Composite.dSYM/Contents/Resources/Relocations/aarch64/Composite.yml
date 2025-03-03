@@ -2,17 +2,17 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/mohamadkhosravi/Desktop/CodeForFun/DesignPatterns/Composite/Composite'
 relocations:
-  - { offset: 0x19, size: 0x8, addend: 0x0, symName: _action1, symObjAddr: 0x0, symBinAddr: 0x100003B4C, symSize: 0x20 }
-  - { offset: 0xD4, size: 0x8, addend: 0x0, symName: _Menu1Item1, symObjAddr: 0x1110, symBinAddr: 0x100008008, symSize: 0x0 }
-  - { offset: 0xF0, size: 0x8, addend: 0x0, symName: _Menu1Item2, symObjAddr: 0x1118, symBinAddr: 0x100008010, symSize: 0x0 }
-  - { offset: 0x106, size: 0x8, addend: 0x0, symName: _Menu1Item3, symObjAddr: 0x1120, symBinAddr: 0x100008018, symSize: 0x0 }
-  - { offset: 0x11C, size: 0x8, addend: 0x0, symName: _Menu1Item4, symObjAddr: 0x1128, symBinAddr: 0x100008020, symSize: 0x0 }
-  - { offset: 0x130, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x128, symBinAddr: 0x100003C74, symSize: 0x124 }
-  - { offset: 0x15E, size: 0x8, addend: 0x0, symName: _createSubMenu, symObjAddr: 0x100, symBinAddr: 0x100003C4C, symSize: 0x28 }
-  - { offset: 0x1A8, size: 0x8, addend: 0x0, symName: _createMenuItem, symObjAddr: 0xC0, symBinAddr: 0x100003C0C, symSize: 0x40 }
-  - { offset: 0x1F0, size: 0x8, addend: 0x0, symName: _Item, symObjAddr: 0x80, symBinAddr: 0x100003BCC, symSize: 0x40 }
-  - { offset: 0x232, size: 0x8, addend: 0x0, symName: _action4, symObjAddr: 0x60, symBinAddr: 0x100003BAC, symSize: 0x20 }
-  - { offset: 0x24C, size: 0x8, addend: 0x0, symName: _action3, symObjAddr: 0x40, symBinAddr: 0x100003B8C, symSize: 0x20 }
-  - { offset: 0x266, size: 0x8, addend: 0x0, symName: _action2, symObjAddr: 0x20, symBinAddr: 0x100003B6C, symSize: 0x20 }
-  - { offset: 0x280, size: 0x8, addend: 0x0, symName: _action1, symObjAddr: 0x0, symBinAddr: 0x100003B4C, symSize: 0x20 }
+  - { offset: 0x19, size: 0x8, addend: 0x0, symName: _action1, symObjAddr: 0x0, symBinAddr: 0x100003B44, symSize: 0x20 }
+  - { offset: 0xD4, size: 0x8, addend: 0x0, symName: _Menu1Item1, symObjAddr: 0x1120, symBinAddr: 0x100008008, symSize: 0x0 }
+  - { offset: 0xF0, size: 0x8, addend: 0x0, symName: _Menu1Item2, symObjAddr: 0x1128, symBinAddr: 0x100008010, symSize: 0x0 }
+  - { offset: 0x106, size: 0x8, addend: 0x0, symName: _Menu1Item3, symObjAddr: 0x1130, symBinAddr: 0x100008018, symSize: 0x0 }
+  - { offset: 0x11C, size: 0x8, addend: 0x0, symName: _Menu1Item4, symObjAddr: 0x1138, symBinAddr: 0x100008020, symSize: 0x0 }
+  - { offset: 0x130, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x12C, symBinAddr: 0x100003C70, symSize: 0x128 }
+  - { offset: 0x15E, size: 0x8, addend: 0x0, symName: _createSubMenu, symObjAddr: 0x100, symBinAddr: 0x100003C44, symSize: 0x2C }
+  - { offset: 0x1A8, size: 0x8, addend: 0x0, symName: _createMenuItem, symObjAddr: 0xC0, symBinAddr: 0x100003C04, symSize: 0x40 }
+  - { offset: 0x1F0, size: 0x8, addend: 0x0, symName: _Item, symObjAddr: 0x80, symBinAddr: 0x100003BC4, symSize: 0x40 }
+  - { offset: 0x232, size: 0x8, addend: 0x0, symName: _action4, symObjAddr: 0x60, symBinAddr: 0x100003BA4, symSize: 0x20 }
+  - { offset: 0x24C, size: 0x8, addend: 0x0, symName: _action3, symObjAddr: 0x40, symBinAddr: 0x100003B84, symSize: 0x20 }
+  - { offset: 0x266, size: 0x8, addend: 0x0, symName: _action2, symObjAddr: 0x20, symBinAddr: 0x100003B64, symSize: 0x20 }
+  - { offset: 0x280, size: 0x8, addend: 0x0, symName: _action1, symObjAddr: 0x0, symBinAddr: 0x100003B44, symSize: 0x20 }
 ...
