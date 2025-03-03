@@ -46,8 +46,8 @@ typedef struct {
 Menu *createSubMenu() {
     Menu *subMenu = (Menu *)malloc(sizeof(Menu));
     if (!subMenu) {
-        perror("Memory allocation failed");
-        exit(EXIT_FAILURE);
+        // perror("Memory allocation failed");
+        // exit(EXIT_FAILURE);
     }
     subMenu->items = NULL;
     subMenu->itemCount = 0;
@@ -55,49 +55,46 @@ Menu *createSubMenu() {
 }
 
 
-MenuComponent *Menu1Item1;
-MenuComponent *Menu1Item2;
-MenuComponent *Menu1Item3;
-MenuComponent *Menu1Item4;
+//       
 
-Menu *createSubMenu() {
-    Menu *subMenu = (Menu *)malloc(sizeof(Menu));
-    if (!subMenu) {
-        perror("Memory allocation failed");
-        exit(EXIT_FAILURE);
-    }
-    subMenu->items = NULL;
-    subMenu->itemCount = 0;
-    return subMenu;
-}
-void addMenuItem(Menu *menu, MenuComponent *item) {
-    menu->items = (MenuComponent **)realloc(menu->items, (menu->itemCount + 1) * sizeof(MenuComponent *));
-    if (!menu->items) {
-        perror("Memory reallocation failed");
-        exit(EXIT_FAILURE);
-    }
-    menu->items[menu->itemCount] = item;
-    menu->itemCount++;
-}
+// Menu *createSubMenu() {
+//     Menu *subMenu = (Menu *)malloc(sizeof(Menu));
+//     if (!subMenu) {
+//         // perror("Memory allocation failed");
+//         // exit(EXIT_FAILURE);
+//     }
+//     subMenu->items = NULL;
+//     subMenu->itemCount = 0;
+//     return subMenu;
+// }
+// void addMenuItem(Menu *menu, MenuComponent *item) {
+//     menu->items = (MenuComponent **)realloc(menu->items, (menu->itemCount + 1) * sizeof(MenuComponent *));
+//     if (!menu->items) {
+//         // perror("Memory reallocation failed");
+//         // exit(EXIT_FAILURE);
+//     }
+//     menu->items[menu->itemCount] = item;
+//     menu->itemCount++;
+// }
  int main() {
-    Menu *subMenu = createSubMenu();
+  //  Menu *subMenu = createSubMenu();
 
-    MenuComponent *subMenu=NULL;
+    // MenuComponent *subMenu=NULL;
 
-    addMenuItem(subMenu, createMenuItem("Item 1", action1));
-    addMenuItem(subMenu, createMenuItem("Item 2", action2));
-    addMenuItem(subMenu, createMenuItem("Item 3", action3));
-    addMenuItem(subMenu, createMenuItem("Item 4", action4));
+    // addMenuItem(subMenu, createMenuItem("Item 1", action1));
+    // addMenuItem(subMenu, createMenuItem("Item 2", action2));
+    // addMenuItem(subMenu, createMenuItem("Item 3", action3));
+    // addMenuItem(subMenu, createMenuItem("Item 4", action4));
     // subMenu=createSubMenu(Menu1Item4);
     // subMenu=createSubMenu(Menu1Item1);
     // subMenu=createSubMenu(Menu1Item2);
     // subMenu=createSubMenu(Menu1Item3);
   
 
-     subMenu->ACTION();
-     subMenu->ACTION();
-     subMenu->ACTION();
-     subMenu->ACTION();
+    //  subMenu->ACTION();
+    //  subMenu->ACTION();
+    //  subMenu->ACTION();
+    //  subMenu->ACTION();
     // subMenu[2]->ACTION();
     // subMenu[3]->ACTION();
     // subMenu[4]->ACTION();
