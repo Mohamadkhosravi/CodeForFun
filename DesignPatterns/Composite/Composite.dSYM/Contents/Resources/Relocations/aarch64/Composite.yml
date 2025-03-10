@@ -1,14 +1,5 @@
 ---
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/mohamadkhosravi/Desktop/CodeForFun/DesignPatterns/Composite/Composite'
-relocations:
-  - { offset: 0x19, size: 0x8, addend: 0x0, symName: _action1, symObjAddr: 0x0, symBinAddr: 0x100003C94, symSize: 0x20 }
-  - { offset: 0x116, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x130, symBinAddr: 0x100003DC4, symSize: 0x8 }
-  - { offset: 0x134, size: 0x8, addend: 0x0, symName: _createSubMenu, symObjAddr: 0x100, symBinAddr: 0x100003D94, symSize: 0x30 }
-  - { offset: 0x168, size: 0x8, addend: 0x0, symName: _addMenuItem, symObjAddr: 0xC0, symBinAddr: 0x100003D54, symSize: 0x40 }
-  - { offset: 0x1B0, size: 0x8, addend: 0x0, symName: _Item, symObjAddr: 0x80, symBinAddr: 0x100003D14, symSize: 0x40 }
-  - { offset: 0x1F2, size: 0x8, addend: 0x0, symName: _action4, symObjAddr: 0x60, symBinAddr: 0x100003CF4, symSize: 0x20 }
-  - { offset: 0x20C, size: 0x8, addend: 0x0, symName: _action3, symObjAddr: 0x40, symBinAddr: 0x100003CD4, symSize: 0x20 }
-  - { offset: 0x226, size: 0x8, addend: 0x0, symName: _action2, symObjAddr: 0x20, symBinAddr: 0x100003CB4, symSize: 0x20 }
-  - { offset: 0x240, size: 0x8, addend: 0x0, symName: _action1, symObjAddr: 0x0, symBinAddr: 0x100003C94, symSize: 0x20 }
+relocations:     []
 ...

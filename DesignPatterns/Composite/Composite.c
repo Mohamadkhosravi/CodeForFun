@@ -22,7 +22,7 @@ void Item(char *title, void (*action)()) {
 }
 
 typedef struct  {
-    char *TITLE;
+    char *TITLE;*
     void(*ACTION)(void);
     
 } MenuComponent;
@@ -42,62 +42,33 @@ typedef struct {
     return Item;
 
 }
-
-Menu *createSubMenu() {
-    Menu *subMenu = (Menu *)malloc(sizeof(Menu));
-    if (!subMenu) {
-        // perror("Memory allocation failed");
-        // exit(EXIT_FAILURE);
-    }
-    subMenu->items = NULL;
-    subMenu->itemCount = 0;
-    return subMenu;
+Menu addMenu(MenuComponent **items, size_t itemCount) {
+    Menu *menu = (Menu *)malloc(sizeof(Menu));
+    menu->items = items;
+    menu->itemCount = itemCount;
+    return menu;
 }
 
 
-//       
-
-// Menu *createSubMenu() {
-//     Menu *subMenu = (Menu *)malloc(sizeof(Menu));
-//     if (!subMenu) {
-//         // perror("Memory allocation failed");
-//         // exit(EXIT_FAILURE);
-//     }
-//     subMenu->items = NULL;
-//     subMenu->itemCount = 0;
-//     return subMenu;
-// }
-// void addMenuItem(Menu *menu, MenuComponent *item) {
-//     menu->items = (MenuComponent **)realloc(menu->items, (menu->itemCount + 1) * sizeof(MenuComponent *));
-//     if (!menu->items) {
-//         // perror("Memory reallocation failed");
-//         // exit(EXIT_FAILURE);
-//     }
-//     menu->items[menu->itemCount] = item;
-//     menu->itemCount++;
-// }
  int main() {
-  //  Menu *subMenu = createSubMenu();
 
-    // MenuComponent *subMenu=NULL;
 
-    // addMenuItem(subMenu, createMenuItem("Item 1", action1));
-    // addMenuItem(subMenu, createMenuItem("Item 2", action2));
-    // addMenuItem(subMenu, createMenuItem("Item 3", action3));
-    // addMenuItem(subMenu, createMenuItem("Item 4", action4));
-    // subMenu=createSubMenu(Menu1Item4);
-    // subMenu=createSubMenu(Menu1Item1);
-    // subMenu=createSubMenu(Menu1Item2);
-    // subMenu=createSubMenu(Menu1Item3);
+
+
+    menu *Submenu =addMenu (addMenuItem("Action1", action1),0);
+    MenuComponent *Submenu = addMenuItem("Action2", action2);
+    MenuComponent *Submenu = addMenuItem("Action3", action3);
+    MenuComponent *Submenu = addMenuItem("Action4", action4);
+    
   
 
-    //  subMenu->ACTION();
-    //  subMenu->ACTION();
-    //  subMenu->ACTION();
-    //  subMenu->ACTION();
-    // subMenu[2]->ACTION();
-    // subMenu[3]->ACTION();
-    // subMenu[4]->ACTION();
-    
+
+ 
+
+
+    // menu1->ACTION();
+    // menu2->ACTION();
+    // menu3->ACTION();
+    // menu4->ACTION();
     return 0;
 }
