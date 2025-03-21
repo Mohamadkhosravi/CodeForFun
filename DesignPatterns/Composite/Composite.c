@@ -22,19 +22,14 @@ void Item(char *title, void (*action)()) {
 }
 
 typedef struct  {
-    char *TITLE;*
+    char *TITLE;
     void(*ACTION)(void);
     
 } MenuComponent;
 
 
-typedef struct {
-    MenuComponent **items;  
-    size_t itemCount;
-} Menu;
 
-
- MenuComponent *addMenuItem(char *title, void(*action)(void)){
+ MenuComponent *createMenuItem(char *title, void(*action)(void)){
 
     MenuComponent *Item= (MenuComponent *)malloc(sizeof(MenuComponent));
     Item->TITLE=title;
@@ -42,33 +37,41 @@ typedef struct {
     return Item;
 
 }
-Menu addMenu(MenuComponent **items, size_t itemCount) {
-    Menu *menu = (Menu *)malloc(sizeof(Menu));
-    menu->items = items;
-    menu->itemCount = itemCount;
-    return menu;
+
+
+
+MenuComponent *Menu1Item1;
+MenuComponent *Menu1Item2;
+MenuComponent *Menu1Item3;
+MenuComponent *Menu1Item4;
+
+MenuComponent * createSubMenu(MenuComponent *Item){
+    static uint32_t CounterOfChilde =1;
+
+      MenuComponent *subMenu;
+      subMenu=(MenuComponent *) realloc(subMenu,sizeof(MenuComponent) );
+      return subMenu;
+
 }
 
-
  int main() {
-
-
-
-
-    menu *Submenu =addMenu (addMenuItem("Action1", action1),0);
-    MenuComponent *Submenu = addMenuItem("Action2", action2);
-    MenuComponent *Submenu = addMenuItem("Action3", action3);
-    MenuComponent *Submenu = addMenuItem("Action4", action4);
-    
-  
-
-
  
+    MenuComponent *subMenu;
+    Menu1Item1=createMenuItem("item1",action1);
+    Menu1Item2=createMenuItem("item2",action2);
+    Menu1Item3=createMenuItem("item1",action3);
+    Menu1Item4=createMenuItem("item2",action4);
+    
+    subMenu=createSubMenu(Menu1Item1);
+    subMenu=createSubMenu(Menu1Item2);
+    subMenu=createSubMenu(Menu1Item3);
+    subMenu=createSubMenu(Menu1Item4);
 
+     subMenu->ACTION();
+     
+    // subMenu[2]->ACTION();
+    // subMenu[3]->ACTION();
+    // subMenu[4]->ACTION();
 
-    // menu1->ACTION();
-    // menu2->ACTION();
-    // menu3->ACTION();
-    // menu4->ACTION();
     return 0;
 }
