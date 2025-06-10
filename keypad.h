@@ -1,4 +1,4 @@
-»ث#ifndef _KEY_SCAN_H_
+#ifndef _KEY_SCAN_H_
 #define _KEY_SCAN_H_
 
 #include "main.h"
