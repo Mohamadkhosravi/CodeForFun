@@ -24,7 +24,7 @@ public:
     void Input(MusicPlayer* player) override {
        // currentState->Input(this);
        //std::cin >> input;
-        std::cout<< input;*/
+        std::cout<< input;
     currentState->Input(this);
     };
    
@@ -37,10 +37,10 @@ public:
         printf("Start music !");
     };
     void exit(MusicPlayer* player)override{
-        printf("music Started ");
+        
     };
     void Input(MusicPlayer* player) override{
-        
+        if(input==0)transmitionto(stop::getInctance();
     };
    
 };
@@ -48,11 +48,12 @@ public:
 class stopState : public State {
 public:
     stopState();
+    void grtInctance(void);
     void entry(MusicPlayer* player) override{
         printf("music is stop !");
     };
     void exit(MusicPlayer* player)override{
-        printf("music is not stop !");
+       
     };
     void Input(MusicPlayer* player) override{
     };
@@ -66,7 +67,7 @@ public:
         printf("music is puse !");
     };
     void exit(MusicPlayer* player)override{
-        printf("music is not puse !");
+    
     };
     void Input(MusicPlayer* player) override{
     };
