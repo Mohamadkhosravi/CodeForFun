@@ -5,7 +5,12 @@
 #define STOP  0
 #define START 1
 #define puse  2
-char input=0;
+input_t input=0;  // input 0(PLAY):  >  input 1(PUSE): ||>  input 3(STOP): #
+typedef enum input_t{
+    START=0;
+    PUSE=1;
+    STOP=3;
+}
 class MusicPlayer;
 class State {
 public:
@@ -20,12 +25,12 @@ public:
     MusicPlayer *currentState, *pereviusState;
     MusicPlayer();
     void TransitionToNewState(State *state);
-    void TransitionToPperevius(State *state);
+    void TransitionToPerevius();
     void Input(MusicPlayer* player) override {
        // currentState->Input(this);
        //std::cin >> input;
         std::cout<< input;
-    currentState->Input(this);
+        currentState->Input(this);
     };
    
 };
@@ -40,7 +45,14 @@ public:
         
     };
     void Input(MusicPlayer* player) override{
-        if(input==0)transmitionto(stop::getInctance();
+        switch(input){
+            case START:
+                break;
+            case PUSE:
+                break;
+            case STOP:
+                break;
+        }
     };
    
 };
@@ -56,6 +68,17 @@ public:
        
     };
     void Input(MusicPlayer* player) override{
+        switch(input){
+            case START:
+                 TransitionToNewState(playState::getInctance());
+                break;
+            case PUSE:
+                 TransitionToPerevius();
+                break;
+            case STOP:
+                TransitionToPerevius();
+                break;
+        }
     };
    
 };
@@ -70,9 +93,38 @@ public:
     
     };
     void Input(MusicPlayer* player) override{
+        switch(input){
+            case START:
+                break;
+            case PUSE:
+                break;
+            case STOP:
+                break;
+        }
     };
 };
 
+class playState :public State{
+    
+public:
+    playState();
+    void entry(MusicPlayer* player) override{
+        printf("music is puse !");
+    };
+    void exit(MusicPlayer* player)override{
+    
+    };
+    void Input(MusicPlayer* player) override{
+        switch(input){
+            case START:
+                break;
+            case PUSE:
+                break;
+            case STOP:
+                break;
+        }
+    };
+};
 
 int main(){
    // while (1) {
