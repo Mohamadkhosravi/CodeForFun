@@ -24,6 +24,7 @@ class MusicPlayer : public State {
 public:
     MusicPlayer *currentState, *pereviusState;
     MusicPlayer();
+    void getInctance(void);
     void TransitionToNewState(State *state);
     void TransitionToPerevius();
     void Input(MusicPlayer* player) override {
@@ -38,6 +39,7 @@ public:
 class startState : public State {
 public:
     startState();
+    void getInctance(void);
     void entry(MusicPlayer* player) override{
         printf("Start music !");
     };
@@ -47,10 +49,13 @@ public:
     void Input(MusicPlayer* player) override{
         switch(input){
             case START:
+                TransitionToPerevius();
                 break;
             case PUSE:
+                TransitionToPerevius();
                 break;
             case STOP:
+                TransitionToPerevius();
                 break;
         }
     };
@@ -60,7 +65,7 @@ public:
 class stopState : public State {
 public:
     stopState();
-    void grtInctance(void);
+    void getInctance(void);
     void entry(MusicPlayer* player) override{
         printf("music is stop !");
     };
@@ -86,6 +91,7 @@ class puseState :public State{
     
 public:
     puseState();
+    void getInctance(void);
     void entry(MusicPlayer* player) override{
         printf("music is puse !");
     };
@@ -95,10 +101,13 @@ public:
     void Input(MusicPlayer* player) override{
         switch(input){
             case START:
+                TransitionToNewState(playState::getInctance());
                 break;
             case PUSE:
+                TransitionToPerevius();
                 break;
             case STOP:
+                TransitionToNewState(stopState::getInctance());
                 break;
         }
     };
@@ -117,10 +126,13 @@ public:
     void Input(MusicPlayer* player) override{
         switch(input){
             case START:
+                TransitionToPerevius();
                 break;
             case PUSE:
+                TransitionToNewState(puseState::getInctance());
                 break;
             case STOP:
+                TransitionToNewState(stopState::getInctance());
                 break;
         }
     };
