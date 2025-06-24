@@ -33,7 +33,11 @@ public:
         std::cout<< input;
         currentState->Input(this);
     };
-   
+    void PlayerProsses()
+    {
+        currentState->Input();
+        
+    }
 };
 
 class startState : public State {
@@ -55,7 +59,7 @@ public:
                 TransitionToPerevius();
                 break;
             case STOP:
-                TransitionToPerevius();
+                TransitionToNewState(playState::getInctance());
                 break;
         }
     };
