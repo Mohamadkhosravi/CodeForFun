@@ -1,154 +1,136 @@
 # include "State.h"
 #include "stdio.h"
 #include <iostream>
+using namespace std;
 
-#define STOP  0
-#define START 1
-#define puse  2
-input_t input=0;  // input 0(PLAY):  >  input 1(PUSE): ||>  input 3(STOP): #
-typedef enum input_t{
-    START=0;
-    PUSE=1;
-    STOP=3;
-}
-class MusicPlayer;
-class State {
-public:
-    State();
-    virtual void entry(MusicPlayer* player){};
-    virtual void exit(MusicPlayer* player){};
-    virtual void Input(MusicPlayer* player){};
+enum input_t {
+    INPUT_START = 0,
+    INPUT_PAUSE = 1,
+    INPUT_STOP  = 2
 };
 
-class MusicPlayer : public State {
+class MusicPlayer;
+
+
+class State {
 public:
-    MusicPlayer *currentState, *pereviusState;
-    MusicPlayer();
-    void getInctance(void);
-    void TransitionToNewState(State *state);
-    void TransitionToPerevius();
-    void Input(MusicPlayer* player) override {
-       // currentState->Input(this);
-       //std::cin >> input;
-        std::cout<< input;
-        currentState->Input(this);
-    };
-    void PlayerProsses()
-    {
-        currentState->Input();
-        
+    virtual void enter(MusicPlayer* player) {}
+    virtual void exit(MusicPlayer* player) {}
+    virtual void handleInput(MusicPlayer* player, input_t input) {}
+    virtual ~State() {}
+};
+
+class MusicPlayer {
+private:
+    State* currentState;
+    State* previousState;
+
+public:
+    MusicPlayer(State* initialState);
+    void transitionTo(State* newState);
+    void transitionToPrevious();
+    void handleInput(input_t input);
+};
+
+
+class PlayingState : public State {
+public:
+    static PlayingState& getInstance() {
+        static PlayingState instance;
+        return instance;
+    }
+
+    void enter(MusicPlayer* player) override {
+        cout << " Playing music...\n";
+    }
+
+    void handleInput(MusicPlayer* player, input_t input) override {
+        if (input == INPUT_PAUSE)
+            player->transitionTo(&PausedState::getInstance());
+        else if (input == INPUT_STOP)
+            player->transitionTo(&StoppedState::getInstance());
     }
 };
 
-class startState : public State {
+class PausedState : public State {
 public:
-    startState();
-    void getInctance(void);
-    void entry(MusicPlayer* player) override{
-        printf("Start music !");
-    };
-    void exit(MusicPlayer* player)override{
-        
-    };
-    void Input(MusicPlayer* player) override{
-        switch(input){
-            case START:
-                TransitionToPerevius();
-                break;
-            case PUSE:
-                TransitionToPerevius();
-                break;
-            case STOP:
-                TransitionToNewState(playState::getInctance());
-                break;
-        }
-    };
-   
+    static PausedState& getInstance() {
+        static PausedState instance;
+        return instance;
+    }
+
+    void enter(MusicPlayer* player) override {
+        cout << " Music paused.\n";
+    }
+
+    void handleInput(MusicPlayer* player, input_t input) override {
+        if (input == INPUT_START)
+            player->transitionTo(&PlayingState::getInstance());
+        else if (input == INPUT_STOP)
+            player->transitionTo(&StoppedState::getInstance());
+    }
 };
 
-class stopState : public State {
+class StoppedState : public State {
 public:
-    stopState();
-    void getInctance(void);
-    void entry(MusicPlayer* player) override{
-        printf("music is stop !");
-    };
-    void exit(MusicPlayer* player)override{
-       
-    };
-    void Input(MusicPlayer* player) override{
-        switch(input){
-            case START:
-                 TransitionToNewState(playState::getInctance());
-                break;
-            case PUSE:
-                 TransitionToPerevius();
-                break;
-            case STOP:
-                TransitionToPerevius();
-                break;
-        }
-    };
-   
-};
-class puseState :public State{
-    
-public:
-    puseState();
-    void getInctance(void);
-    void entry(MusicPlayer* player) override{
-        printf("music is puse !");
-    };
-    void exit(MusicPlayer* player)override{
-    
-    };
-    void Input(MusicPlayer* player) override{
-        switch(input){
-            case START:
-                TransitionToNewState(playState::getInctance());
-                break;
-            case PUSE:
-                TransitionToPerevius();
-                break;
-            case STOP:
-                TransitionToNewState(stopState::getInctance());
-                break;
-        }
-    };
+    static StoppedState& getInstance() {
+        static StoppedState instance;
+        return instance;
+    }
+
+    void enter(MusicPlayer* player) override {
+        cout << "⏹ Music stopped.\n";
+    }
+
+    void handleInput(MusicPlayer* player, input_t input) override {
+        if (input == INPUT_START)
+            player->transitionTo(&PlayingState::getInstance());
+    }
 };
 
-class playState :public State{
-    
-public:
-    playState();
-    void entry(MusicPlayer* player) override{
-        printf("music is puse !");
-    };
-    void exit(MusicPlayer* player)override{
-    
-    };
-    void Input(MusicPlayer* player) override{
-        switch(input){
-            case START:
-                TransitionToPerevius();
-                break;
-            case PUSE:
-                TransitionToNewState(puseState::getInctance());
-                break;
-            case STOP:
-                TransitionToNewState(stopState::getInctance());
-                break;
-        }
-    };
-};
 
-int main(){
-   // while (1) {
-        //scanf("%d",&input);
-        std::cin>>input;
-        printf("number is: %d!",input);
-        printf("Hello");
-   // }
-   
+MusicPlayer::MusicPlayer(State* initialState) {
+    currentState = initialState;
+    previousState = nullptr;
+    currentState->enter(this);
+}
+
+void MusicPlayer::transitionTo(State* newState) {
+    if (currentState)
+        currentState->exit(this);
+    previousState = currentState;
+    currentState = newState;
+    currentState->enter(this);
+}
+
+void MusicPlayer::transitionToPrevious() {
+    if (previousState) {
+        State* temp = currentState;
+        currentState = previousState;
+        previousState = temp;
+        currentState->enter(this);
+    }
+}
+
+void MusicPlayer::handleInput(input_t input) {
+    currentState->handleInput(this, input);
+}
+
+int main() {
+    MusicPlayer player(&StoppedState::getInstance());
+    int val;
+
+    while (true) {
+        cout << "\n Input command (0=Start, 1=Pause, 2=Stop): ";
+        cin >> val;
+
+        if (val < 0 || val > 2) {
+            cout << " Invalid input. Try again.\n";
+            continue;
+        }
+
+        player.handleInput(static_cast<input_t>(val));
+    }
+
     return 0;
 }
