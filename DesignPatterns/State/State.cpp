@@ -11,7 +11,6 @@ enum input_t {
 
 class MusicPlayer;
 
-
 class State {
 public:
     virtual void enter(MusicPlayer* player) {}
@@ -44,11 +43,24 @@ public:
         cout << " Playing music...\n";
     }
 
+    void handleInput(MusicPlayer* player, input_t input) override;
+};
+
+
+class StoppedState : public State {
+public:
+    static StoppedState& getInstance() {
+        static StoppedState instance;
+        return instance;
+    }
+
+    void enter(MusicPlayer* player) override {
+        cout << " Music stopped.\n";
+    }
+
     void handleInput(MusicPlayer* player, input_t input) override {
-        if (input == INPUT_PAUSE)
-            player->transitionTo(&PausedState::getInstance());
-        else if (input == INPUT_STOP)
-            player->transitionTo(&StoppedState::getInstance());
+        if (input == INPUT_START)
+            player->transitionTo(&PlayingState::getInstance());
     }
 };
 
@@ -71,23 +83,12 @@ public:
     }
 };
 
-class StoppedState : public State {
-public:
-    static StoppedState& getInstance() {
-        static StoppedState instance;
-        return instance;
-    }
-
-    void enter(MusicPlayer* player) override {
-        cout << "⏹ Music stopped.\n";
-    }
-
-    void handleInput(MusicPlayer* player, input_t input) override {
-        if (input == INPUT_START)
-            player->transitionTo(&PlayingState::getInstance());
-    }
-};
-
+void PlayingState::handleInput(MusicPlayer* player, input_t input) {
+    if (input == INPUT_PAUSE)
+        player->transitionTo(&PausedState::getInstance());
+    else if (input == INPUT_STOP)
+        player->transitionTo(&StoppedState::getInstance());
+}
 
 MusicPlayer::MusicPlayer(State* initialState) {
     currentState = initialState;
@@ -125,7 +126,7 @@ int main() {
         cin >> val;
 
         if (val < 0 || val > 2) {
-            cout << " Invalid input. Try again.\n";
+            coutInvalid input. Try again.\n";
             continue;
         }
 
