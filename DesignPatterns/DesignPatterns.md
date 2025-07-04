@@ -14,4 +14,4 @@
 | 9  | Decorator        | ⏳ Pending  | Adds extra features to existing components dynamically (e.g., logging, security layers) |
 | 10 | Flyweight        | ⏳ Pending  | Optimizes memory usage for shared objects (e.g., preallocated buffers for real-time systems) |
 | 11 | Proxy            | ⏳ Pending  | Controls access to hardware components (e.g., managing SPI/I2C transactions safely) |
-| 12 | State            | ⏳ Pending  |                                                        |
+| 12 | State            | ✅ Done | Organizes device behavior as state-specific classes (e.g., Boot, Idle, Active, Error) for cleaner FSM implementation|
