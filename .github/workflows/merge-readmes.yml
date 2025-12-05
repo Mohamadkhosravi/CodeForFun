@@ -1,0 +1,44 @@
+name: Merge READMEs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  merge-readmes:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      
+      - name: Merge all README.md files
+        run: |
+          MAIN_README="README.md"
+          TMP_FILE="README.tmp.md"
+          
+         
+          head -n 20 "$MAIN_README" > "$TMP_FILE"
+
+         
+          find . -type f -name "README.md" ! -path "./README.md" | while read file; do
+              echo -e "\n\n---\n\n" >> "$TMP_FILE"
+              echo "###    $(dirname "$file")" >> "$TMP_FILE"
+              echo -e "\n" >> "$TMP_FILE"
+              cat "$file" >> "$TMP_FILE"
+          done
+
+          
+          mv "$TMP_FILE" "$MAIN_README"
+
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Merge internal READMEs into main README [skip ci]" || echo "No changes to commit"
+          git push
