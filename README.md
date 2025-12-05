@@ -1,42 +1,26 @@
 # Code for Fun 🏂 
 
----
+Welcome to **Code for Fun**, a creative, practical, and enjoyable playground of coding!  
+This repository is where I collect and develop anything that is:
 
-## 📁 Project Contents
+✨ **Fun to build**  
+⚙️ **Professional to use**  
+🧠 **Educational to learn**  
+💡 **Creative in idea and implementation**
 
-### 1️⃣ Design Patterns
-This folder contains various **Design Pattern implementations**.  
-The internal README will be merged inline using GitHub Action.
+Here, you will find a mix of:
+- **Design Pattern implementations** in real embedded/IoT systems
+- **Professional utilities** such as logging tools and Serial monitoring software
+- Any **technique, tool, experiment, or crazy idea** that improves my experience as an embedded and software engineer
 
-- Link to original internal README: [Design Patterns README](https://github.com/Mohamadkhosravi/CodeForFun/blob/main/DesignPatterns/DesignPatterns.md)
-
----
-
-### 2️⃣ Professional Triggers
-
-#### Lightweight Log Library
-A professional logging system for embedded or Python projects.  
-The internal README will be merged inline using GitHub Action.
-
-- Link to original internal README: [Lightweight Log Library README](https://github.com/Mohamadkhosravi/CodeForFun/blob/main/Professional%20Trigs/Lightweight%20Log%20Llibrary/README.md)
-
-#### SerialScope
-A Python PyQt tool for serial port monitoring and display.  
-The internal README will be merged inline using GitHub Action.
-
-- Link to original internal README: [SerialScope README](https://github.com/Mohamadkhosravi/CodeForFun/blob/main/Professional%20Trigs/SerialScope/README.md)
+If it is **useful**, **smart**, or **just fun** — it belongs here! 
 
 ---
 
-## 💡 Project Goals
+## 📁 Project Collections
 
-- Practice and document **Design Patterns** for embedded and real-world projects.  
-- Develop professional logging and monitoring tools with Python and PyQt.  
-- Provide an engaging and practical learning environment.
+The following sections are automatically generated and updated using GitHub Actions.  
+Each folder has its own README, but all of them will be **merged and displayed right here**.
 
----
-
-> This project is created by **Mohammad Khosravi**.
-
----
+🔽 Scroll down to explore everything in one place…
 
