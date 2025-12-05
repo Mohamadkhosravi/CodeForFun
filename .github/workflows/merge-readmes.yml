@@ -10,31 +10,28 @@ jobs:
   merge-readmes:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Merge all internal README.md files into a temporary file
       - name: Merge internal READMEs
         run: |
           MAIN_README="README.md"
           TMP_FILE="README.tmp.md"
           
-          # Keep the first 20 lines of the main README (header)
+          # Keep first 20 lines of main README
           head -n 20 "$MAIN_README" > "$TMP_FILE"
 
-          # Find all internal README.md files and append their content
-          find . -type f -name "README.md" ! -path "./README.md" | while read file; do
+          # Merge all internal READMEs
+          find . -type f -name "README.md" ! -path "./README.md" -print0 | while IFS= read -r -d '' file; do
               echo -e "\n\n---\n\n" >> "$TMP_FILE"
-              echo "### Contents of $(dirname "$file")" >> "$TMP_FILE"
+              echo "### Contents of $file" >> "$TMP_FILE"
               echo -e "\n" >> "$TMP_FILE"
               cat "$file" >> "$TMP_FILE"
           done
 
-          # Always replace README.md (force overwrite)
+          # Force overwrite
           mv "$TMP_FILE" "$MAIN_README"
 
-      # 3️⃣ Commit and push changes, always (force)
       - name: Commit and push changes
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
@@ -44,4 +41,3 @@ jobs:
           git add README.md
           git commit --allow-empty -m "Force merge internal READMEs into main README [skip ci]"
           git push https://$GH_PAT@github.com/Mohamadkhosravi/CodeForFun.git HEAD:main
-      
