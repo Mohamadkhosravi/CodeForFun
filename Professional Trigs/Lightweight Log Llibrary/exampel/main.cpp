@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include<Loger.h>
+#include<Logger.h>
 void motor_init() ;
 void motor_check_temp(int temp);
 int main() {
