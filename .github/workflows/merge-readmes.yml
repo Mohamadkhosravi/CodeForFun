@@ -36,10 +36,12 @@ jobs:
 
       # 3️⃣ Commit and push changes, always (force)
       - name: Commit and push changes
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --local user.name "Mohamadkhosravi"
           git config --local user.email "Mohamadkhosravi@users.noreply.github.com"
           git add README.md
-          # Commit even if nothing changed (add --allow-empty)
           git commit --allow-empty -m "Force merge internal READMEs into main README [skip ci]"
-          git push
+          git push https://$GH_PAT@github.com/Mohamadkhosravi/CodeForFun.git HEAD:main
+      
