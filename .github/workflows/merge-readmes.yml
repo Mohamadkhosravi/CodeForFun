@@ -50,7 +50,8 @@ jobs:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --local user.name "Mohamadkhosravi"
-          git config --local user.email "Mohamadkhosravi@users.noreply.github.com"
+          git config --local user.email "khosravimmd@gmail.com"
           git add README.md
           git commit --allow-empty -m "Force merge internal READMEs into main README [skip ci]"
           git push https://$GH_PAT@github.com/Mohamadkhosravi/CodeForFun.git HEAD:main
+
