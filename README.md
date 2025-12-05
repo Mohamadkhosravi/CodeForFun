@@ -1,7 +1,4 @@
-# Code for fun 🏂 
-
-
-**Code for Fun** is an educational and fun project focused on programming, including **Design Patterns**, professional logging tools, and Python/PyQt utilities.
+# Code for Fun 🏂 
 
 ---
 
