@@ -10,28 +10,41 @@ jobs:
   merge-readmes:
     runs-on: ubuntu-latest
     steps:
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Merge all internal READMEs
       - name: Merge internal READMEs
         run: |
           MAIN_README="README.md"
           TMP_FILE="README.tmp.md"
-          
-          # Keep first 20 lines of main README
+
+          # Keep the first 20 lines of main README (header)
           head -n 20 "$MAIN_README" > "$TMP_FILE"
 
-          # Merge all internal READMEs
-          find . -type f -name "README.md" ! -path "./README.md" -print0 | while IFS= read -r -d '' file; do
-              echo -e "\n\n---\n\n" >> "$TMP_FILE"
-              echo "### Contents of $file" >> "$TMP_FILE"
-              echo -e "\n" >> "$TMP_FILE"
-              cat "$file" >> "$TMP_FILE"
+          # List of internal README paths
+          INTERNAL_READMES=(
+            "DesignPatterns/DesignPatterns.md"
+            "Professional Trigs/Lightweight Log Llibrary/README.md"
+            "Professional Trigs/SerialScope/README.md"
+          )
+
+          for file in "${INTERNAL_READMES[@]}"; do
+              if [ -f "$file" ]; then
+                  echo -e "\n\n---\n\n" >> "$TMP_FILE"
+                  echo "### Contents of $file" >> "$TMP_FILE"
+                  echo -e "\n" >> "$TMP_FILE"
+                  cat "$file" >> "$TMP_FILE"
+              else
+                  echo "Warning: $file not found!"
+              fi
           done
 
           # Force overwrite
           mv "$TMP_FILE" "$MAIN_README"
 
+      # 3️⃣ Commit and push changes using PAT
       - name: Commit and push changes
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
