@@ -26,15 +26,13 @@ void motor_check_temp(int temp) {
         LOG_ERR("motor overheating!");
 }
 ```
-
 ## Configuration
 
 | Macro | Purpose |
 |---|---|
-| `DEBUG` | Set to `0` to strip all logging at compile time |
-| `COLOR_LOG` | Set to `0` to disable ANSI colors (e.g. for log files) |
+| `DEBUG` | Set to `ENABLE` or `DISABLE` — strips all logging at compile time when disabled |
+| `COLOR_LOG` | Set to `ENABLE` or `DISABLE` — turns ANSI colors on/off (e.g. disable for log files) |
 | `LOGER` | Change the underlying print function (`printf`, `Serial.printf`, etc.) |
-
 ## Notes
 
 This is intentionally minimal — no timestamps, no log levels beyond info/warn/error, no output redirection to files. If you need something heavier, this probably isn't it. If you just want readable terminal output fast, it might be exactly enough.
