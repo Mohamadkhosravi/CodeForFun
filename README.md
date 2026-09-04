@@ -1,4 +1,4 @@
-# Code for Fun
+# Code for Fun 🏂
 
 Welcome to **CodeForFun** — a personal playground for experimenting, learning, and having fun with code.
 
